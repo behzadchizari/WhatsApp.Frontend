@@ -7,7 +7,20 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "skipTests": true
+        },
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
         }
       },
       "root": "",
@@ -19,7 +32,8 @@
           "options": {
             "stylePreprocessorOptions": {
               "includePaths": [
-                "src"
+                "src",
+                "src/app/uikit"
               ]
             },
             "outputPath": "dist/whatsapp",
@@ -36,7 +50,10 @@
             ],
             "styles": [
               "@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/app/uikit/variables.scss",
+              "src/app/uikit/mat-override.scss",
+              "src/app/uikit/grid.scss"
             ],
             "scripts": []
           },
