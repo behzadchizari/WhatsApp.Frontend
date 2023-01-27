@@ -1,0 +1,50 @@
+@import 'variables';
+
+.chat-list-header {
+    padding: 6px 16px 9px 16px;
+    align-items: center;
+    border-bottom: 1px solid $border-gray;
+    background-color: $active-default-background;
+
+}
+
+.avatar-container {
+    cursor: pointer;
+    align-items: center;
+
+    & .avatar {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        overflow: hidden;
+
+        & img {
+            width: inherit;
+        }
+    }
+}
+
+.profile-options {
+    justify-content: end;
+    align-items: baseline;
+
+    & .header-action {
+        align-items: center;
+        color: $panel-header-icon;
+        cursor: pointer;
+    }
+}
+
+.chat-info {
+    justify-content: center;
+}
+
+.chat-name {
+    font-size: 16px;
+    color: $primary-font;
+}
+
+.chat-status {
+    font-size: 12px;
+    color: $secondary-font;
+}

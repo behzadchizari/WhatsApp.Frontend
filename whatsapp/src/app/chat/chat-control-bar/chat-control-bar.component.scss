@@ -1,0 +1,23 @@
+@import 'variables';
+
+.control {
+    background-color: aliceblue;
+    padding: 8px 16px;
+}
+
+.message-input {
+    padding: 0 16px;
+
+    & input {
+        padding: 10px 8px;
+        border-radius: 8px;
+        border: none;
+        outline: none;
+        color: $primary-font;
+    }
+}
+
+.icon-container {
+    color: $icon-lighter;
+    align-items: center;
+}

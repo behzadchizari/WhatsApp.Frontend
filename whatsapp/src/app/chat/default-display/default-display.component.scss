@@ -1,0 +1,40 @@
+@import 'variables';
+
+.chat-intro {
+    position: relative;
+    align-items: center;
+    justify-items: center;
+    place-content: center;
+    color: $primary-title;
+
+
+
+
+    & .web-intro-image {
+        width: 56%;
+        height: 30%;
+        background-image: url(../../../assets/images/whatsapp-web.png);
+        background-size: 76%;
+        background-position: bottom;
+        background-repeat: no-repeat;
+        opacity: 0;
+        animation: scale-fade-in 300ms forwards 500ms;
+    }
+
+    & h1,
+    & p {
+        opacity: 0;
+        animation: scale-fade-in 300ms forwards 300ms;
+    }
+
+    &::after {
+        content: " ";
+        width: 100%;
+        padding: 2px 0;
+        background-color: $whatsapp-accent;
+        position: absolute;
+        bottom: 0;
+        opacity: 1;
+
+    }
+}
