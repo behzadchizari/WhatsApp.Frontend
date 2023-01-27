@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { PlaygroundModule } from './playground/playground.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UikitModule } from './uikit/uikit.module';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { UikitModule } from './uikit/uikit.module';
     AppRoutingModule,
     UikitModule,
     PlaygroundModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
