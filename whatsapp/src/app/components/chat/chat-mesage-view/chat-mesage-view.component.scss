@@ -1,7 +1,127 @@
+@import 'variables';
+
 .message-view {
     height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 p {
     padding: 10px 0;
+}
+
+
+.message-out-container {
+    width: 100%;
+    padding: 16px;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+
+    .message {
+        .message-info {
+            justify-content: space-between;
+        }
+
+        &::before {
+            content: " ";
+            width: 0px;
+            height: 0;
+            border: 10px solid aliceblue;
+            position: absolute;
+            top: 0;
+            right: -10px;
+            border-right-color: transparent;
+            border-bottom-color: transparent;
+        }
+    }
+}
+
+.message-in-container {
+    width: 100%;
+    padding: 16px;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+
+    .message {
+        .message-info {
+            justify-content: end;
+        }
+
+        &::before {
+            content: " ";
+            width: 0px;
+            height: 0;
+            border: 10px solid aliceblue;
+            position: absolute;
+            top: 0;
+            left: -10px;
+            border-left-color: transparent;
+            border-bottom-color: transparent;
+        }
+    }
+}
+
+.message {
+    width: fit-content;
+    min-width: 150px;
+    padding: 4px 8px 0 8px;
+    max-width: 300px;
+    background-color: aliceblue;
+    position: relative;
+    // overflow: hidden;
+
+    .message-action {
+        overflow: hidden;
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        button {
+            width: 40px;
+            padding: 5px 0 0 5px;
+            color: $secondary-font;
+            background: linear-gradient(to right, aliceblue, aliceblue, transparent);
+            display: flex;
+            visibility: hidden;
+            transform: translate(-20px);
+            transition: all 100ms ease-in-out;
+            border: none;
+            cursor: pointer;
+        }
+    }
+
+    .message-text {
+        font-size: 14px;
+        color: $primary-font;
+    }
+
+    .message-info {
+        color: $icon-lighter;
+        font-size: 12px;
+        align-items: center;
+    }
+
+    .read-status {
+        display: flex;
+
+        mat-icon {
+            font-size: 12px;
+            width: unset;
+            height: unset;
+        }
+    }
+}
+
+.message:hover .message-action button {
+    visibility: visible;
+    transform: translate(0px);
+
+}
+
+button {
+    position: sticky;
+    bottom: 0;
 }
