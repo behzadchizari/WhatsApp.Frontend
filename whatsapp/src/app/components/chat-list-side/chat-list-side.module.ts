@@ -5,7 +5,7 @@ import { ChatListHeaderComponent } from './chat-list-header/chat-list-header.com
 import { ChatListSearchComponent } from './chat-list-search/chat-list-search.component';
 import { ChatListComponent } from './chat-list/chat-list.component';
 import { ChatItemComponent } from './chat-item/chat-item.component';
-import { UikitModule } from '../uikit/uikit.module';
+import { UikitModule } from 'src/app/uikit/uikit.module';
 
 
 

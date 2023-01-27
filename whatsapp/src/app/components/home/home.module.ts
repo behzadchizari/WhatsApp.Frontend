@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
-import { UikitModule } from '../uikit/uikit.module';
+import { UikitModule } from 'src/app/uikit/uikit.module';
 import { ChatModule } from '../chat/chat.module';
 import { ChatListSideModule } from '../chat-list-side/chat-list-side.module';
-
 
 
 @NgModule({
