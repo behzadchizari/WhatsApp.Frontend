@@ -1,0 +1,32 @@
+@import 'variables';
+
+.chat-list-search {
+    padding: 10px 16px;
+    align-items: center;
+    border-bottom: 1px solid $border-gray;
+    background-color: $default-background;
+    gap: 8px;
+
+    & .search-input {
+        & input {
+            width: 100%;
+            padding-right: 32px;
+            padding-left: 65px;
+            font-size: 15px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            height: 30px;
+            background-color: $search-input-background;
+            border-radius: 16px;
+            border: none;
+            outline: none;
+        }
+    }
+
+    & .saerch-filter {
+        align-items: center;
+        color: $icon-lighter;
+        cursor: pointer;
+    }
+}

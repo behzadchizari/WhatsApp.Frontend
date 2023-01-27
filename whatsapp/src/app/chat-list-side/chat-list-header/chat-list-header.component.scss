@@ -1,0 +1,33 @@
+@import 'variables';
+
+.chat-list-header {
+    padding: 10px 16px;
+    align-items: center;
+    border-bottom: 1px solid $border-gray;
+
+}
+
+.avatar-container {
+
+    & .avatar {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        overflow: hidden;
+
+        & img {
+            width: inherit;
+        }
+    }
+}
+
+.profile-options {
+    justify-content: end;
+    align-items: baseline;
+
+    & .header-action {
+        align-items: center;
+        color: $panel-header-icon;
+        cursor: pointer;
+    }
+}
