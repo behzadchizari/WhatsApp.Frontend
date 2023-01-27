@@ -1,0 +1,41 @@
+@import 'variables';
+
+article#container {
+    background-color: $main-background;
+    width: 100%;
+    height: 100vh;
+
+    &::after {
+        content: " ";
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 125px;
+        background-color: $whatsapp-primary;
+        z-index: 1;
+    }
+}
+
+#intro {
+    width: 80%;
+    height: 95vh;
+    position: relative;
+    top: 20px;
+    background-color: $chat-intro;
+    z-index: 10;
+    margin: 0 auto;
+    box-shadow: 0 6px 18px rgba(rgb(0, 0, 0), .05);
+    animation: scale-fade-in 300ms alternate;
+}
+
+.chat-list {
+    border-right: 1px solid $border-gray;
+    flex: 0 0 30%;
+}
+
+.chat {
+    background: #f3efea url(../../assets/images/default-background.jpg);
+    background-size: contain;
+    background-size: contain;
+    background-blend-mode: darken;
+}
