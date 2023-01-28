@@ -1,22 +1,4 @@
 <div class="message-view">
-    <ng-container *ngFor="let message of messages">
-        <div [class.message-out-container]="message.out" [class.message-in-container]="!message.out">
-            <div class="message column">
-                <div class="message-action">
-                    <button>
-                        <mat-icon>keyboard_arrow_down</mat-icon>
-                    </button>
-                </div>
-                <div class="message-text">{{message.text}}</div>
-                <div class="message-info row">
-                    <span class="read-status" *ngIf="message.out">
-                        <mat-icon>check</mat-icon>
-                    </span>
-                    <span class="message-time">13:50</span>
-                </div>
-            </div>
-
-        </div>
-    </ng-container>
+    <app-chat-message *ngFor="let message of messages" [message]="message"></app-chat-message>
     <button (click)="pushMessage()">Add Message</button>
 </div>

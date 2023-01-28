@@ -1,0 +1,14 @@
+<div class="p16" [class.message-out-container]="message.out" [class.message-in-container]="!message.out">
+    <div class="message column">
+        <div class="message-action">
+            <button>
+                <mat-icon>keyboard_arrow_down</mat-icon>
+            </button>
+        </div>
+        <div class="message-text">{{message.text}}</div>
+        <div class="message-info row">
+            <app-chat-message-read-status *ngIf="message.out" [status]="message.status"></app-chat-message-read-status>
+            <span class="message-time">13:50</span>
+        </div>
+    </div>
+</div>
