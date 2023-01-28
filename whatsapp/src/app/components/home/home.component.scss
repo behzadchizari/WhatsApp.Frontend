@@ -33,6 +33,10 @@ article#container {
     flex: 0 0 30%;
 }
 
+app-chat-list {
+    overflow: auto;
+}
+
 .chat {
     background: #f3efea url(../.../../../../assets/images/default-background.jpg);
     background-size: contain;
