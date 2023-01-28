@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 
@@ -13,12 +14,14 @@ import { MatBadgeModule } from '@angular/material/badge';
     CommonModule,
     MatSlideToggleModule,
     MatIconModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatMenuModule
   ],
   exports: [
     MatSlideToggleModule,
     MatIconModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatMenuModule
   ]
 })
 export class UikitModule { }
