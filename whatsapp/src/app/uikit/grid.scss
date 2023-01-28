@@ -1,4 +1,7 @@
-.row {
+@import 'variables';
+
+.row,
+.row-sm {
     display: flex;
     flex-direction: row;
 }
@@ -46,4 +49,38 @@
 
 .fit-height {
     height: 100vh;
+}
+
+
+
+@media screen and (min-width:$lg-screen) {}
+
+@media screen and (min-width:$md-screen) and (max-width: $lg-screen) {}
+
+@media screen and (min-width:$md-screen) and (max-width: $sm-screen) {
+    .row-sm {
+        flex-direction: column;
+    }
+
+    .row-sm>* {
+        flex-grow: 1;
+    }
+
+    .hidden-sm {
+        display: none;
+    }
+}
+
+@media screen and (max-width: $md-screen) {
+    .row-sm {
+        flex-direction: column;
+    }
+
+    .row-sm>* {
+        flex-grow: 1;
+    }
+
+    .hidden-sm {
+        display: none;
+    }
 }
