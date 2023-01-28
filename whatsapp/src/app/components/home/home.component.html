@@ -1,13 +1,11 @@
 <article id="container">
     <section id="intro" class="row-sm">
-        <aside class="chat-list column" >
-            <app-chat-list-header></app-chat-list-header>
-            <app-chat-list-search></app-chat-list-search>
-            <app-chat-list></app-chat-list>
+        <aside class="chat-list column">
+            <app-chat-list-side></app-chat-list-side>
         </aside>
         <section class="chat column col-1 hidden-sm">
             <app-default-display *ngIf="!chatSelected" class="col-1"></app-default-display>
-            <app-chat *ngIf="chatSelected" class="col-1"> </app-chat>
+            <app-chat *ngIf="chatSelected"></app-chat>
         </section>
     </section>
 </article>

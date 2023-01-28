@@ -6,8 +6,7 @@ import { ChatListSearchComponent } from './chat-list-search/chat-list-search.com
 import { ChatListComponent } from './chat-list/chat-list.component';
 import { ChatItemComponent } from './chat-item/chat-item.component';
 import { UikitModule } from 'src/app/uikit/uikit.module';
-
-
+import { PipesModule } from 'src/app/pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +18,8 @@ import { UikitModule } from 'src/app/uikit/uikit.module';
   ],
   imports: [
     CommonModule,
-    UikitModule
+    UikitModule,
+    PipesModule
   ],
   exports: [
     ChatListSideComponent,

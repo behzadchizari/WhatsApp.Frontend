@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { ChatItem } from 'src/app/models/chat-item';
 
 @Component({
   selector: 'app-chat-item',
@@ -6,6 +7,11 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./chat-item.component.scss']
 })
 export class ChatItemComponent {
-  @Input() active: boolean = false;
-  @Input() unread: boolean = false;
+  @Input() chatItem!: ChatItem;
+  @Output() itemClick = new EventEmitter<ChatItem>();
+
+  onChatItemClick() {
+    console.log('item clicked');
+    this.itemClick.emit(this.chatItem);
+  }
 }

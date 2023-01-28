@@ -1,4 +1,5 @@
-<div class="chat-item row" [class.unread]="unread" [class.active]="active">
+<div class="chat-item row" [class.unread]="chatItem.unreadMessagesCount" [class.active]="chatItem.isActive"
+    (click)="onChatItemClick()">
     <div class="chat-item-avatar-container">
         <div class="chat-item-avatar">
             <img src="https://picsum.photos/200" alt="username">
@@ -6,26 +7,30 @@
     </div>
     <div class="chat-item-info">
         <div class="row">
-            <div class="chat-name col-1"><span>Behzad Chizari</span></div>
-            <div class="chat-last-message-date"><small>Saturday</small></div>
+            <div class="chat-name col-1"><span>{{chatItem.name}}</span></div>
+            <div class="chat-last-message-date"><small>{{chatItem.lastActivity! | appDate}}</small></div>
         </div>
         <div class="chat-item-secondary row">
             <div class="message-hint col-1" title="Message">
-                <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem
-                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                    unknown printer took a galley of type and scrambled it to make a type specimen
-                    book
-                </span>
+                <span>{{chatItem.displayMessage}}</span>
             </div>
             <div class="chat-status row">
-                <div class="icon-center">
+                <div class="icon-center" *ngIf="chatItem.muted">
                     <mat-icon>volume_off</mat-icon>
                 </div>
-                <div class="unread-badge">145</div>
+                <div class="unread-badge" *ngIf="chatItem.unreadMessagesCount">
+                    <span [innerHTML]=""></span>{{chatItem.unreadMessagesCount | limitNumber:2}}
+                </div>
             </div>
             <div class="chat-item-action">
-                <mat-icon>keyboard_arrow_down</mat-icon>
+                <button class="no-button" [matMenuTriggerFor]="menu" (click)="onChatActionClick($event)">
+                    <mat-icon>keyboard_arrow_down</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item>Pin chat</button>
+                    <button mat-menu-item>Marke as unread</button>
+                    <button mat-menu-item>Delete</button>
+                </mat-menu>
             </div>
         </div>
     </div>

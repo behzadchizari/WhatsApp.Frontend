@@ -1,5 +1,12 @@
 @import 'variables';
 
+:host {
+    background: #f3efea url(../.../../../../../assets/images/default-background.jpg);
+    background-size: contain;
+    background-blend-mode: darken;
+
+}
+
 .message-view {
     height: 100%;
     position: relative;

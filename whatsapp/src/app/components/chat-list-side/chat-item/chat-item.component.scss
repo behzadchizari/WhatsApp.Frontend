@@ -90,16 +90,16 @@
 .unread-badge {
     background-color: $whatsapp-accent;
     color: $contrast-font;
-    border-radius: 50%;
+    border-radius: 45%;
     text-align: center;
     display: flex;
     align-items: center;
     place-content: center;
-    width: 20px;
+    min-width: 20px;
     height: 20px;
     font-size: 10px;
     display: none;
-
+    padding: 0 4px;
 }
 
 .chat-item-action {

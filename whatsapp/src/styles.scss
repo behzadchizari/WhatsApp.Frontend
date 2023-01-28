@@ -63,6 +63,17 @@ body {
   }
 }
 
+
+.no-button {
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+// // // // // Scrollbar
 ::-webkit-scrollbar {
   width: 0.4em;
   background-color: $default-background;
