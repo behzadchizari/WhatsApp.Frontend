@@ -7,6 +7,8 @@ import { ChatMesageViewComponent } from './chat-mesage-view/chat-mesage-view.com
 import { ChatControlBarComponent } from './chat-control-bar/chat-control-bar.component';
 import { UikitModule } from 'src/app/uikit/uikit.module';
 import { DirectivesModule } from 'src/app/directives/directives.module';
+import { ChatMessageComponent } from './chat-message/chat-message.component';
+import { ChatMessageReadStatusComponent } from './chat-message-read-status/chat-message-read-status.component';
 
 
 
@@ -17,6 +19,8 @@ import { DirectivesModule } from 'src/app/directives/directives.module';
     ChatHeaderComponent,
     ChatMesageViewComponent,
     ChatControlBarComponent,
+    ChatMessageComponent,
+    ChatMessageReadStatusComponent,
   ],
   imports: [
     CommonModule,

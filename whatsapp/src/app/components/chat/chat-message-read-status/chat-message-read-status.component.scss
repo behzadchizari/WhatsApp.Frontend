@@ -1,0 +1,15 @@
+@import 'variables';
+
+:host {
+    display: flex;
+}
+
+mat-icon {
+    font-size: 12px;
+    width: unset;
+    height: unset;
+}
+
+.read {
+    color: $icon-read;
+}
