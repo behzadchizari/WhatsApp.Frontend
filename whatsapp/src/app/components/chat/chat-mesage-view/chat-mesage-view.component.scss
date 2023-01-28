@@ -7,6 +7,10 @@
     flex-direction: column;
 }
 
+.message-view>:first-child {
+    margin-top: auto
+}
+
 p {
     padding: 10px 0;
 }
@@ -54,7 +58,7 @@ p {
             content: " ";
             width: 0px;
             height: 0;
-            border: 10px solid aliceblue;
+            border: 5px solid aliceblue;
             position: absolute;
             top: 0;
             left: -10px;
