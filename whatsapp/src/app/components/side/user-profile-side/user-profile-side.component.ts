@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SideComponentStateService } from 'src/app/services/component-state.service';
+import { SideComponentStateService } from 'src/app/services/side-component-state.service';
 
 @Component({
   selector: 'app-user-profile-side',

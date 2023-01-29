@@ -60,7 +60,7 @@ export class ChatService {
   ]
 
   public getChatList$(): Observable<ChatItem[]> {
-    return of(this.chatList).pipe(delay(1000));
+    return of(this.chatList);
   }
 
   public selectChatItem(chatItem: ChatItem): void {

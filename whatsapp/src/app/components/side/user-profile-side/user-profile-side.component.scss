@@ -1,11 +1,12 @@
+@import 'variables';
+
 :host {
     flex-grow: 1;
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: aliceblue;
+    background-color: $default-background;
 }
-
 
 button {
     width: 100%
