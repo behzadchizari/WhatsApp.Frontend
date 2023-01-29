@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, TemplateRef } from '@angular/core';
+import { ComponentStateService } from 'src/app/services/component-state.service';
 
 @Component({
   selector: 'app-side',
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./side.component.scss']
 })
 export class SideComponent {
+  selectedTemplate!: TemplateRef<any>;
 
+  @ViewChild('chatList', { static: true }) chatList!: TemplateRef<any>;
+  @ViewChild('userProfile', { static: true }) userProfile!: TemplateRef<any>;
+
+  constructor(private componentStateService: ComponentStateService) { }
+
+  ngOnInit() {
+    this.componentStateService.component$.subscribe(component => {
+      this.selectedTemplate = component === 'chatList' ? this.chatList : this.userProfile;
+    });
+  }
 }
