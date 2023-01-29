@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ChatItem } from 'src/app/models/chat-item';
 
 @Component({
   selector: 'app-chat-header',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./chat-header.component.scss']
 })
 export class ChatHeaderComponent {
+  @Input() chatItem!: ChatItem;
 
 }

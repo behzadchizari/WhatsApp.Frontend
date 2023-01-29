@@ -1,10 +1,10 @@
 <div class="chat-list-header row">
     <div class="avatar-container row col-1 gap16">
         <div class="avatar">
-            <img src="https://picsum.photos/200" alt="user avatar">
+            <img [src]="chatItem.image" alt="user avatar">
         </div>
         <div class="chat-info col-1 column">
-            <div class="chat-name"><span>Sajedeh Nasiri</span></div>
+            <div class="chat-name"><span>{{chatItem.name}}</span></div>
             <div class="chat-status"><span>click here for more info</span></div>
         </div>
     </div>
