@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   subscribeToSelectedChatItem() {
-    this.chatService.selectedChatItem.pipe(
+    this.chatService.selectedChatItem$.pipe(
       tap((data) => {
         if (data) {
           this.chatSelected = true;

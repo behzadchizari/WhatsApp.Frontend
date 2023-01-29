@@ -4,6 +4,7 @@ import { HomeComponent } from './home.component';
 import { UikitModule } from 'src/app/uikit/uikit.module';
 import { ChatModule } from '../chat/chat.module';
 import { ChatListSideModule } from '../chat-list-side/chat-list-side.module';
+import { SideModule } from '../side/side.module';
 
 
 @NgModule({
@@ -14,7 +15,7 @@ import { ChatListSideModule } from '../chat-list-side/chat-list-side.module';
     CommonModule,
     UikitModule,
     ChatModule,
-    ChatListSideModule
+    SideModule
   ]
 })
 export class HomeModule { }

@@ -15,7 +15,7 @@ export class ChatListComponent implements OnInit, OnDestroy {
   constructor(private chatService: ChatService) { }
 
   loadChatList() {
-    this.chatList$ = this.chatService.getChatList().pipe(
+    this.chatList$ = this.chatService.getChatList$().pipe(
       take(1),
       takeUntil(this._unsubscribe)
     );
