@@ -5,7 +5,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class SideComponentStateService {
-  private componentSubject = new BehaviorSubject<string | undefined>('chatList');
+  private componentSubject = new BehaviorSubject<string>('chatList');
 
   component$ = this.componentSubject.asObservable();
 
@@ -14,6 +14,6 @@ export class SideComponentStateService {
   }
 
   clear() {
-    this.componentSubject.next(undefined);
+    this.componentSubject.next('chatList');
   }
 }
