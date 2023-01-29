@@ -10,7 +10,7 @@
             <div class="chat-last-message-date"><small>{{chatItem.lastActivity! | appDate}}</small></div>
         </div>
         <div class="chat-item-secondary row">
-            <div class="message-hint col-1" title="Message">
+            <div class="message-hint col-1" [attr.matTooltip]="chatItem.displayMessage">
                 <span>{{chatItem.displayMessage}}</span>
             </div>
             <div class="chat-status row">
