@@ -8,12 +8,12 @@
 }
 
 .avatar-container {
-
     & .avatar {
         width: 35px;
         height: 35px;
         border-radius: 50%;
         overflow: hidden;
+        cursor: pointer;
 
         & img {
             width: inherit;

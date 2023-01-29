@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-chat-list-header',
@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./chat-list-header.component.scss']
 })
 export class ChatListHeaderComponent {
+  @Output() avatarClick = new EventEmitter();
 
+  onAvatarClickClick() {
+    this.avatarClick.emit();
+  }
 }
