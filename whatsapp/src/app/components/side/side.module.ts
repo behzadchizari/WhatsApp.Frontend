@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ChatListSideModule } from '../chat-list-side/chat-list-side.module';
-import { UserProfileSideModule } from '../user-profile-side/user-profile-side.module';
+import { UserProfileSideModule } from './user-profile-side/user-profile-side.module';
 import { SideComponent } from './side.component';
+import { ChatListSideModule } from './chat-list-side/chat-list-side.module';
 
 
 
