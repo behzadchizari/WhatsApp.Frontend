@@ -14,4 +14,9 @@ export class ChatItemComponent {
     console.log('item clicked');
     this.itemClick.emit(this.chatItem);
   }
+
+  onChatActionClick(event: Event) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
 }
