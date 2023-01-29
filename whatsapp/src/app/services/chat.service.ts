@@ -9,7 +9,7 @@ export class ChatService {
 
   constructor() { }
 
-  public selectedChatItem: Subject<ChatItem> = new Subject<ChatItem>();
+  public selectedChatItem$: Subject<ChatItem> = new Subject<ChatItem>();
 
   private chatList: ChatItem[] = [
     {
@@ -59,11 +59,16 @@ export class ChatService {
     }
   ]
 
-  public getChatList(): Observable<ChatItem[]> {
+  public getChatList$(): Observable<ChatItem[]> {
     return of(this.chatList).pipe(delay(1000));
   }
 
   public selectChatItem(chatItem: ChatItem): void {
-    this.selectedChatItem.next(chatItem);
+    chatItem.unreadMessagesCount = 0;
+    this.selectedChatItem$.next(chatItem);
+  }
+
+  public getSelectedChatItem$(): Observable<ChatItem> {
+    return this.selectedChatItem$.asObservable();
   }
 }
