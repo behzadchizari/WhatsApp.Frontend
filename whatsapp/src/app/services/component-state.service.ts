@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ComponentStateService {
-  private componentSubject = new BehaviorSubject<string>('chatList');
+export class SideComponentStateService {
+  private componentSubject = new BehaviorSubject<string | undefined>('chatList');
 
   component$ = this.componentSubject.asObservable();
 
-  changeComponent(component: string) {
+  openComponent(component: string) {
     this.componentSubject.next(component);
+  }
+
+  clear() {
+    this.componentSubject.next(undefined);
   }
 }

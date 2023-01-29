@@ -1,3 +1,4 @@
-<ng-container *ngTemplateOutlet="selectedTemplate"></ng-container>
-<ng-template #chatList><app-chat-list-side></app-chat-list-side></ng-template>
-<ng-template #userProfile><app-user-profile-side></app-user-profile-side></ng-template>
+<app-chat-list-side></app-chat-list-side>
+
+<ng-container *ngTemplateOutlet="selectedTemplate!"></ng-container>
+<ng-template #userProfile><app-user-profile-side @fade></app-user-profile-side></ng-template>

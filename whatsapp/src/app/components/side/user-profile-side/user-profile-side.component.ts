@@ -1,21 +1,16 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, HostBinding } from '@angular/core';
+import { Component } from '@angular/core';
+import { SideComponentStateService } from 'src/app/services/component-state.service';
 
 @Component({
   selector: 'app-user-profile-side',
   templateUrl: './user-profile-side.component.html',
-  styleUrls: ['./user-profile-side.component.scss'],
-  animations: [
-    trigger('slideIn', [
-      state('in', style({ transform: 'translateX(0)' })),
-      transition('void => *', [
-        style({ transform: 'translateX(-100%)' }),
-        animate(500)
-      ]),
-    ])
-  ]
+  styleUrls: ['./user-profile-side.component.scss']
 })
 export class UserProfileSideComponent {
-  @HostBinding('@slideIn') slideIn = 'in';
 
+  constructor(private componentStateService: SideComponentStateService) { }
+
+  goBack() {
+    this.componentStateService.clear();
+  }
 }
