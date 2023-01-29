@@ -1,4 +1,5 @@
 export class ChatItem {
+    id: number;
     name?: string;
     displayMessage?: string;
     lastActivity?: Date;
