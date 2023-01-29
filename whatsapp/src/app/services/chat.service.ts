@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, Subject } from 'rxjs';
+import { Observable, of, Subject, delay } from 'rxjs';
 import { ChatItem } from '../models/chat-item';
 
 @Injectable({
@@ -60,7 +60,7 @@ export class ChatService {
   ]
 
   public getChatList(): Observable<ChatItem[]> {
-    return of(this.chatList);
+    return of(this.chatList).pipe(delay(1000));
   }
 
   public selectChatItem(chatItem: ChatItem): void {

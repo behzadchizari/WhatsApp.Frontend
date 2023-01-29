@@ -64,6 +64,19 @@ body {
 }
 
 
+@keyframes fade-in {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 2;
+  }
+}
+
+
 .no-button {
   padding: 0;
   margin: 0;
