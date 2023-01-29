@@ -8,12 +8,12 @@ import { Component } from '@angular/core';
 export class ChatMesageViewComponent {
 
   messages = [
-    { text: 'Hello', out: true, status: 'read' },
-    { text: 'Hey there', out: false, status: 'read' },
-    { text: 'You good?', out: true, status: 'read' },
-    { text: 'Yup', out: false },
-    { text: 'U?', out: true, status: 'delivered' },
-    { text: 'Let\'s go out To day. I don\'t know if you are busy or not. But it\'s been too boring do far.I need something new and different. Are you upo to eat out tonight or what?', out: true, status: 'sent' },
+    // { text: 'Hello', out: true, status: 'read' },
+    // { text: 'Hey there', out: false, status: 'read' },
+    // { text: 'You good?', out: true, status: 'read' },
+    // { text: 'Yup', out: false },
+    // { text: 'U?', out: true, status: 'delivered' },
+    // { text: 'Let\'s go out To day. I don\'t know if you are busy or not. But it\'s been too boring do far.I need something new and different. Are you upo to eat out tonight or what?', out: true, status: 'sent' },
     // { text: 'Fine', out: true },
     // { text: 'You have time?', out: true },
     // { text: 'sup?', out: false },
@@ -27,7 +27,7 @@ export class ChatMesageViewComponent {
   ]
 
   pushMessage() {
-    this.messages.push({ text: 'ChatMesageViewComponent wroks!', out: true });
+    // this.messages.push({ text: 'ChatMesageViewComponent wroks!', out: true });
   }
 
 }

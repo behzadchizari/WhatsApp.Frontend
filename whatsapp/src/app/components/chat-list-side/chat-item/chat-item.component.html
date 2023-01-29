@@ -1,5 +1,4 @@
-<div class="chat-item row" [class.unread]="chatItem.unreadMessagesCount" [class.active]="chatItem.isActive"
-    (click)="onChatItemClick()">
+<div class="chat-item row" [class.unread]="chatItem.unreadMessagesCount" (click)="onChatItemClick()" appActive>
     <div class="chat-item-avatar-container">
         <div class="chat-item-avatar">
             <img [src]="chatItem.image" alt="username">
