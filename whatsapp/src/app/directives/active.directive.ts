@@ -1,5 +1,7 @@
 import { Directive, ElementRef, HostBinding, HostListener, Renderer2 } from '@angular/core';
 
+const chatItemSelector = 'app-chat-item';
+
 @Directive({
   selector: '[appActive]'
 })
@@ -9,7 +11,6 @@ export class ActiveDirective {
 
   constructor(private el: ElementRef) { }
 
-
   @HostListener('click', ['$event.target'])
   onClick() {
     this.isHighlighted = !this.isHighlighted;
@@ -17,8 +18,10 @@ export class ActiveDirective {
 
   @HostListener('document:click', ['$event.target'])
   public onDocumentClick(target: HTMLElement): void {
-    if (!this.el.nativeElement.contains(target)
-      && this.el.nativeElement.classList.contains('active')) {
+    const hostElement = this.el.nativeElement;
+    if (!hostElement.contains(target)
+      && target.closest(chatItemSelector)
+      && hostElement.classList.contains('active')) {
       this.isHighlighted = false;
     }
   }
