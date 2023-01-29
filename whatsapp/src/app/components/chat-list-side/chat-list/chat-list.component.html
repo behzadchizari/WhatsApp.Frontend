@@ -1,25 +1,2 @@
-<app-chat-item *ngFor="let chatItem of chatList" [chatItem]="chatItem"
-    (itemClick)="onChatItemClick($event)"></app-chat-item>
-<!-- <app-chat-item [unread]="true"></app-chat-item>
-<app-chat-item></app-chat-item>
-<app-chat-item></app-chat-item>
-<app-chat-item></app-chat-item>
-<app-chat-item></app-chat-item>
-<app-chat-item></app-chat-item>
-<app-chat-item [unread]="true"></app-chat-item>
-<app-chat-item [unread]="true"></app-chat-item>
-<app-chat-item [unread]="true"></app-chat-item>
-<app-chat-item></app-chat-item>
-<app-chat-item></app-chat-item>
-<app-chat-item></app-chat-item>
-<app-chat-item></app-chat-item>
-<app-chat-item></app-chat-item>
-<app-chat-item></app-chat-item>
-<app-chat-item></app-chat-item>
-<app-chat-item></app-chat-item>
-<app-chat-item></app-chat-item>
-<app-chat-item></app-chat-item>
-<app-chat-item></app-chat-item>
-<app-chat-item></app-chat-item>
-<app-chat-item></app-chat-item>
-<app-chat-item></app-chat-item> -->
+<app-chat-item *ngFor="let chatItem of chatList$ | async" [chatItem]="chatItem" (itemClick)="onChatItemClick($event)">
+</app-chat-item>

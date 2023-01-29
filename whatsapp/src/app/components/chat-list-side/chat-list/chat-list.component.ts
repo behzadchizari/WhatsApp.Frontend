@@ -1,51 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subject, take, takeUntil, tap } from 'rxjs';
 import { ChatItem } from 'src/app/models/chat-item';
+import { ChatService } from 'src/app/services/chat.service';
 
 @Component({
   selector: 'app-chat-list',
   templateUrl: './chat-list.component.html',
   styleUrls: ['./chat-list.component.scss']
 })
-export class ChatListComponent {
-  chatList: ChatItem[] = [
-    {
-      name: 'Behzad Chizari',
-      displayMessage: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      image: 'https://picsum.photos/200',
-      lastActivity: new Date('2023/1/27'),
-      muted: false,
-      unreadMessagesCount: 999
-    },
-    {
-      name: 'Behzad Chizari',
-      displayMessage: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      image: 'https://picsum.photos/200',
-      lastActivity: new Date('2023/1/24'),
-      muted: true,
-      unreadMessagesCount: 0
-    },
-    {
-      name: 'Behzad Chizari',
-      displayMessage: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      image: 'https://picsum.photos/200',
-      lastActivity: new Date(),
-      muted: true,
-      unreadMessagesCount: 24
-    },
-    {
-      name: 'Behzad Chizari',
-      displayMessage: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      image: 'https://picsum.photos/200',
-      lastActivity: new Date('2022/12/4'),
-      muted: true,
-      unreadMessagesCount: 0
-    }
-  ]
+export class ChatListComponent implements OnInit, OnDestroy {
+  chatList$!: Observable<ChatItem[]>;
+  private _unsubscribe: Subject<boolean> = new Subject<boolean>();
 
+  constructor(private chatService: ChatService) { }
 
+  loadChatList() {
+    this.chatList$ = this.chatService.getChatList().pipe(
+      take(1),
+      takeUntil(this._unsubscribe)
+    );
+  }
 
+  ngOnInit(): void {
+    this.loadChatList();
+  }
 
-  onChatItemClick(event: ChatItem) {
+  onChatItemClick(chatItem: ChatItem) {
+    this.chatService.selectChatItem(chatItem);
+  }
 
+  ngOnDestroy(): void {
+    this._unsubscribe.next(true);
+    this._unsubscribe.complete();
   }
 }
