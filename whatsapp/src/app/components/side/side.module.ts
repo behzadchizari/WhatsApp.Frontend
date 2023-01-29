@@ -4,8 +4,6 @@ import { UserProfileSideModule } from './user-profile-side/user-profile-side.mod
 import { SideComponent } from './side.component';
 import { ChatListSideModule } from './chat-list-side/chat-list-side.module';
 
-
-
 @NgModule({
   declarations: [SideComponent],
   imports: [
