@@ -1,0 +1,25 @@
+@import 'variables';
+
+header {
+    width: 100%;
+    height: 105px;
+    background-color: $panel-header-background;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.panel-name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+mat-icon,
+.panel-name {
+    color: $contrast-font;
+}
+
+@media screen and (min-width:$md-screen) and (max-width: $lg-screen) {
+    header {
+        height: 115px;
+    }
+}
