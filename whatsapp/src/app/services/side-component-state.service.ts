@@ -5,7 +5,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class SideComponentStateService {
-  private componentSubject = new BehaviorSubject<string>('userProfile');
+  private componentSubject = new BehaviorSubject<string>('chatList');
 
   component$ = this.componentSubject.asObservable();
 
