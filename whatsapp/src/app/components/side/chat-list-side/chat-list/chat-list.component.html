@@ -1,2 +1,3 @@
-<app-chat-item *ngFor="let chatItem of chatList$ | async" [chatItem]="chatItem" (itemClick)="onChatItemClick($event)">
+<app-chat-item *ngFor="let chatItem of chatList$ | async" [chatItem]="chatItem" (itemClick)="onChatItemClick($event)"
+    [isActive]="chatItem === activeChatItem">
 </app-chat-item>

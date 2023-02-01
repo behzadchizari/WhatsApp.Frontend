@@ -10,6 +10,7 @@ import { ChatService } from 'src/app/services/chat.service';
 })
 export class ChatListComponent implements OnInit, OnDestroy {
   chatList$!: Observable<ChatItem[]>;
+  activeChatItem: ChatItem | undefined;
   private _unsubscribe: Subject<boolean> = new Subject<boolean>();
 
   constructor(private chatService: ChatService) { }
@@ -23,10 +24,23 @@ export class ChatListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.loadChatList();
+    this.subscribeToSelectedChatItem();
   }
 
   onChatItemClick(chatItem: ChatItem) {
+    this.activeChatItem = chatItem;
     this.chatService.selectChatItem(chatItem);
+  }
+
+  subscribeToSelectedChatItem() {
+    this.chatService.selectedChatItem$.pipe(
+      tap((data) => {
+        if (!data) {
+          this.activeChatItem = undefined;
+        };
+      }),
+      takeUntil(this._unsubscribe))
+      .subscribe();
   }
 
   ngOnDestroy(): void {

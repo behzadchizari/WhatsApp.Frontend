@@ -7,6 +7,7 @@ import { ChatItem } from 'src/app/models/chat-item';
   styleUrls: ['./chat-item.component.scss']
 })
 export class ChatItemComponent {
+  @Input() isActive!: boolean;
   @Input() chatItem!: ChatItem;
   @Output() itemClick = new EventEmitter<ChatItem>();
 
