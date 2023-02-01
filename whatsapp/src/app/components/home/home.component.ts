@@ -10,7 +10,7 @@ import { ChatService } from 'src/app/services/chat.service';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   chatSelected: boolean = false;
-  selectedChatItem!: ChatItem;
+  selectedChatItem?: ChatItem;
   private _unsubscribe: Subject<boolean> = new Subject<boolean>();
 
   constructor(private chatService: ChatService) { }
@@ -22,10 +22,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   subscribeToSelectedChatItem() {
     this.chatService.selectedChatItem$.pipe(
       tap((data) => {
-        if (data) {
-          this.chatSelected = true;
-          this.selectedChatItem = data;
-        };
+        this.chatSelected = data !== undefined;
+        this.selectedChatItem = data;
       }),
       takeUntil(this._unsubscribe))
       .subscribe();

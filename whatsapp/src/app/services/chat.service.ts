@@ -9,7 +9,7 @@ export class ChatService {
 
   constructor() { }
 
-  public selectedChatItem$: Subject<ChatItem> = new Subject<ChatItem>();
+  public selectedChatItem$: Subject<ChatItem | undefined> = new Subject<ChatItem | undefined>();
 
   private chatList: ChatItem[] = [
     {
@@ -56,6 +56,96 @@ export class ChatService {
       lastActivity: new Date('2022/12/4'),
       muted: false,
       unreadMessagesCount: 0
+    },
+    {
+      id: 5,
+      name: 'John Doe',
+      displayMessage: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      image: 'https://www.hotelbooqi.com/wp-content/uploads/2021/12/128-1280406_view-user-icon-png-user-circle-icon-png.png',
+      lastActivity: new Date('2022/12/4'),
+      muted: false,
+      unreadMessagesCount: 0
+    },
+    {
+      id: 5,
+      name: 'John Doe',
+      displayMessage: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      image: 'https://www.hotelbooqi.com/wp-content/uploads/2021/12/128-1280406_view-user-icon-png-user-circle-icon-png.png',
+      lastActivity: new Date('2022/12/4'),
+      muted: false,
+      unreadMessagesCount: 0
+    },
+    {
+      id: 5,
+      name: 'John Doe',
+      displayMessage: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      image: 'https://www.hotelbooqi.com/wp-content/uploads/2021/12/128-1280406_view-user-icon-png-user-circle-icon-png.png',
+      lastActivity: new Date('2022/12/4'),
+      muted: false,
+      unreadMessagesCount: 0
+    },
+    {
+      id: 5,
+      name: 'John Doe',
+      displayMessage: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      image: 'https://www.hotelbooqi.com/wp-content/uploads/2021/12/128-1280406_view-user-icon-png-user-circle-icon-png.png',
+      lastActivity: new Date('2022/12/4'),
+      muted: false,
+      unreadMessagesCount: 0
+    },
+    {
+      id: 5,
+      name: 'John Doe',
+      displayMessage: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      image: 'https://www.hotelbooqi.com/wp-content/uploads/2021/12/128-1280406_view-user-icon-png-user-circle-icon-png.png',
+      lastActivity: new Date('2022/12/4'),
+      muted: false,
+      unreadMessagesCount: 0
+    },
+    {
+      id: 5,
+      name: 'John Doe',
+      displayMessage: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      image: 'https://www.hotelbooqi.com/wp-content/uploads/2021/12/128-1280406_view-user-icon-png-user-circle-icon-png.png',
+      lastActivity: new Date('2022/12/4'),
+      muted: false,
+      unreadMessagesCount: 0
+    },
+    {
+      id: 5,
+      name: 'John Doe',
+      displayMessage: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      image: 'https://www.hotelbooqi.com/wp-content/uploads/2021/12/128-1280406_view-user-icon-png-user-circle-icon-png.png',
+      lastActivity: new Date('2022/12/4'),
+      muted: false,
+      unreadMessagesCount: 0
+    },
+    {
+      id: 5,
+      name: 'John Doe',
+      displayMessage: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      image: 'https://www.hotelbooqi.com/wp-content/uploads/2021/12/128-1280406_view-user-icon-png-user-circle-icon-png.png',
+      lastActivity: new Date('2022/12/4'),
+      muted: false,
+      unreadMessagesCount: 0
+    },
+    {
+      id: 5,
+      name: 'John Doe',
+      displayMessage: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      image: 'https://www.hotelbooqi.com/wp-content/uploads/2021/12/128-1280406_view-user-icon-png-user-circle-icon-png.png',
+      lastActivity: new Date('2022/12/4'),
+      muted: false,
+      unreadMessagesCount: 0
+    },
+    {
+      id: 5,
+      name: 'John Doe',
+      displayMessage: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      image: 'https://www.hotelbooqi.com/wp-content/uploads/2021/12/128-1280406_view-user-icon-png-user-circle-icon-png.png',
+      lastActivity: new Date('2022/12/4'),
+      muted: false,
+      unreadMessagesCount: 0
     }
   ]
 
@@ -68,7 +158,11 @@ export class ChatService {
     this.selectedChatItem$.next(chatItem);
   }
 
-  public getSelectedChatItem$(): Observable<ChatItem> {
+  public clearSelectedChatItem(): void {
+    this.selectedChatItem$.next(undefined);
+  }
+
+  public getSelectedChatItem$(): Observable<ChatItem | undefined> {
     return this.selectedChatItem$.asObservable();
   }
 }

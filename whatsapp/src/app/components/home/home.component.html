@@ -5,7 +5,7 @@
         </aside>
         <section class="chat column col-1 hidden-sm">
             <app-default-display *ngIf="!chatSelected" class="col-1"></app-default-display>
-            <app-chat *ngIf="chatSelected" [chatItem]="selectedChatItem"></app-chat>
+            <app-chat *ngIf="chatSelected && selectedChatItem" [chatItem]="selectedChatItem!"></app-chat>
         </section>
     </section>
 </article>
