@@ -1,5 +1,4 @@
-import { Injectable, OnDestroy, OnInit } from '@angular/core';
-import { MediaMatcher } from '@angular/cdk/layout';
+import { Injectable, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { ScreenSize } from '../enums/screen-size';
 
