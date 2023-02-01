@@ -81,7 +81,7 @@ export class SideComponent {
   }
 
   private subscribeToScreenDetection() {
-    this.screenService.screenSizeChanged.pipe(
+    this.screenService.screenSize.pipe(
       tap((screen) => {
         this.isSmallScreeen = screen === ScreenSize.ExtraSmall || screen === ScreenSize.Small;
       }),

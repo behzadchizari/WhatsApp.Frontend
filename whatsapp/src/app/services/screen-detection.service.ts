@@ -14,50 +14,44 @@ const screenSizeQueries = {
   providedIn: 'root'
 })
 export class ScreenDetectionService implements OnDestroy {
-  private queries = new Map<ScreenSize, MediaQueryList>();
-  private listeners = new Map<ScreenSize, (e: MediaQueryListEvent) => void>();
-  screenSizeChanged = new Subject<ScreenSize>();
+  private screenSizeChanged: Subject<ScreenSize> = new Subject<ScreenSize>();
 
-  constructor(private mediaMatcher: MediaMatcher) {
-    this.initData();
-    this.emitTheInitialValue();
+  get screenSize() {
+    return this.screenSizeChanged.asObservable();
   }
 
-  private initData() {
-    Object.values(ScreenSize).forEach(size => {
-      this.queries.set(size, this.mediaMatcher.matchMedia(screenSizeQueries[size]));
-      this.listeners.set(size, (e: MediaQueryListEvent) => this.updateScreenSize(e));
-      this.queries.get(size)!.addEventListener('change', this.listeners.get(size)!);
+  constructor() {
+    this.AddEventListeners();
+    this.initScreenSize();
+  }
+
+  private AddEventListeners() {
+    Object.values(ScreenSize).some(size => {
+      window.matchMedia(screenSizeQueries[size]).addEventListener('change', (e: MediaQueryListEvent) => this.updateScreenSize());
     });
-
-
   }
 
-  private emitTheInitialValue(): void {
+  private initScreenSize() {
     setTimeout(() => {
-      Object.values(ScreenSize).some(size => {
-        if (this.queries.get(size)!.matches) {
-          this.screenSizeChanged.next(size);
-          return true;
-        }
-        return false;
-      });
+      this.updateScreenSize();
     }, 0);
   }
 
-  private updateScreenSize(e: MediaQueryListEvent) {
+  private updateScreenSize() {
     Object.values(ScreenSize).some(size => {
-      if (e.media === screenSizeQueries[size]) {
+      if (window.matchMedia(screenSizeQueries[size]).matches) {
         this.screenSizeChanged.next(size);
-        return true;
       }
-      return false;
     });
   }
 
-  ngOnDestroy() {
-    Object.values(ScreenSize).forEach(size => {
-      this.queries.get(size)!.removeEventListener('change', this.listeners.get(size)!);
+  private RemoveEventListeners() {
+    Object.values(ScreenSize).some(size => {
+      window.matchMedia(screenSizeQueries[size]).removeEventListener('change', (e: MediaQueryListEvent) => this.updateScreenSize());
     });
+  }
+
+  ngOnDestroy(): void {
+    this.RemoveEventListeners();
   }
 }

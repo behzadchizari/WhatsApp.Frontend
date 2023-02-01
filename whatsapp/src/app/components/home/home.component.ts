@@ -35,8 +35,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private subscribeToScreenDetection() {
-    this.screenService.screenSizeChanged.pipe(
-      take(1),
+    this.screenService.screenSize.pipe(
       tap((screen) => {
         this.isSmallScreeen = screen === ScreenSize.ExtraSmall || screen === ScreenSize.Small;
       }),
