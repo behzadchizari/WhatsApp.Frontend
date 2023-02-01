@@ -1,0 +1,15 @@
+@import 'variables';
+
+:host {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: $side-panel-background;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.panel-body {
+    overflow: auto;
+}
