@@ -1,13 +1,13 @@
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable, OnDestroy, OnInit } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { Subject } from 'rxjs';
 import { ScreenSize } from '../enums/screen-size';
 
 const screenSizeQueries = {
   [ScreenSize.Large]: '(min-width: 1200px)',
-  [ScreenSize.Medium]: '(min-width: 992px) and (max-width: 1199px)',
-  [ScreenSize.Small]: '(min-width: 768px) and (max-width: 991px)',
-  [ScreenSize.ExtraSmall]: '(max-width: 767px)'
+  [ScreenSize.Medium]: '(min-width: 992px) and (max-width: 1200px)',
+  [ScreenSize.Small]: '(min-width: 768px) and (max-width: 992px)',
+  [ScreenSize.ExtraSmall]: '(max-width: 768px)'
 };
 
 @Injectable({
@@ -20,6 +20,7 @@ export class ScreenDetectionService implements OnDestroy {
 
   constructor(private mediaMatcher: MediaMatcher) {
     this.initData();
+    this.emitTheInitialValue();
   }
 
   private initData() {
@@ -28,6 +29,20 @@ export class ScreenDetectionService implements OnDestroy {
       this.listeners.set(size, (e: MediaQueryListEvent) => this.updateScreenSize(e));
       this.queries.get(size)!.addEventListener('change', this.listeners.get(size)!);
     });
+
+
+  }
+
+  private emitTheInitialValue(): void {
+    setTimeout(() => {
+      Object.values(ScreenSize).some(size => {
+        if (this.queries.get(size)!.matches) {
+          this.screenSizeChanged.next(size);
+          return true;
+        }
+        return false;
+      });
+    }, 0);
   }
 
   private updateScreenSize(e: MediaQueryListEvent) {
