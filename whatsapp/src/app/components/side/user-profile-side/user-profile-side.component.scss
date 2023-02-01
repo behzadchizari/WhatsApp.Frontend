@@ -1,15 +1,5 @@
 @import 'variables';
 
-:host {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: $side-panel-background;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-}
-
 .image-container {
     width: 100%;
     height: fit-content;
@@ -24,10 +14,6 @@
     border-radius: 50%;
     overflow: hidden;
     justify-content: center;
-}
-
-.panel-body {
-    overflow: auto;
 }
 
 .editable-info {
