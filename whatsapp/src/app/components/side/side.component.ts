@@ -1,6 +1,9 @@
 import { Component, ViewChild, TemplateRef } from '@angular/core';
 import { SideComponentStateService } from 'src/app/services/side-component-state.service';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { ChatService } from 'src/app/services/chat.service';
+import { Subject, takeUntil, tap } from 'rxjs';
+import { ChatItem } from 'src/app/models/chat-item';
 
 @Component({
   selector: 'app-side',
@@ -29,16 +32,18 @@ import { trigger, transition, style, animate } from '@angular/animations';
 export class SideComponent {
   @ViewChild('userProfile', { static: true }) userProfile!: TemplateRef<any>;
   @ViewChild('chatList', { static: true }) chatList!: TemplateRef<any>;
+  @ViewChild('messageView', { static: true }) messageView!: TemplateRef<any>;
 
   templates = new Map<string, TemplateRef<any>>();
 
   selectedTemplate: TemplateRef<any> = this.chatList;
 
-  constructor(private componentStateService: SideComponentStateService) { }
+  constructor(private componentStateService: SideComponentStateService, private chatService: ChatService) { }
 
   ngOnInit() {
     this.fillTheTemplateMap();
     this.subscribeToSelectedComponent();
+    this.subscribeToSelectedChatItem();
   }
 
   private subscribeToSelectedComponent(): void {
@@ -48,7 +53,24 @@ export class SideComponent {
   }
 
   private fillTheTemplateMap(): void {
+    this.templates.set('messageView', this.messageView);
     this.templates.set('userProfile', this.userProfile);
     this.templates.set('chatList', this.chatList);
+  }
+
+
+  selectedChatItem!: ChatItem;
+  private _unsubscribe: Subject<boolean> = new Subject<boolean>();
+
+  subscribeToSelectedChatItem() {
+    this.chatService.selectedChatItem$.pipe(
+      tap((data) => {
+        if (data) {
+          this.selectedChatItem = data;
+          this.componentStateService.openComponent('messageView');
+        };
+      }),
+      takeUntil(this._unsubscribe))
+      .subscribe();
   }
 }

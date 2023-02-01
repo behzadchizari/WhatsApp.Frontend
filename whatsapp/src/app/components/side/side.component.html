@@ -1,4 +1,18 @@
 <app-chat-list-side></app-chat-list-side>
+
+<ng-template #userProfile>
+    <app-side-panel @slideInOut name="Profile" [hasHeader]="true">
+        <app-user-profile-side></app-user-profile-side>
+    </app-side-panel>
+</ng-template>
+
+
+
+<ng-template #messageView>
+    <app-side-panel @slideInOut [hasHeader]="false">
+        <app-chat [chatItem]="selectedChatItem"></app-chat>
+    </app-side-panel>
+</ng-template>
+
+
 <ng-container *ngTemplateOutlet="selectedTemplate"></ng-container>
-<ng-template #chatList></ng-template>
-<ng-template #userProfile><app-user-profile-side @slideInOut></app-user-profile-side></ng-template>
