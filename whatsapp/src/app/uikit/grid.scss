@@ -55,7 +55,9 @@
     height: 100vh;
 }
 
-
+.show-sm {
+    display: none;
+}
 
 @media screen and (min-width:$lg-screen) {}
 
@@ -73,6 +75,10 @@
     .hidden-sm {
         display: none;
     }
+
+    .show-sm {
+        display: block;
+    }
 }
 
 @media screen and (max-width: $md-screen) {
@@ -86,5 +92,9 @@
 
     .hidden-sm {
         display: none;
+    }
+
+    .show-sm {
+        display: block;
     }
 }

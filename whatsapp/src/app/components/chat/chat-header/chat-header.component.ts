@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ChatItem } from 'src/app/models/chat-item';
 
 @Component({
@@ -8,5 +8,9 @@ import { ChatItem } from 'src/app/models/chat-item';
 })
 export class ChatHeaderComponent {
   @Input() chatItem!: ChatItem;
+  @Output() close = new EventEmitter();
 
+  goBack() {
+    this.close.emit();
+  }
 }

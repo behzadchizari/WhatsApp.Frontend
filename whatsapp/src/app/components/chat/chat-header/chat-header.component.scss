@@ -24,6 +24,10 @@
     }
 }
 
+.back-button button {
+    color: $panel-header-icon;
+}
+
 .profile-options {
     justify-content: end;
     align-items: baseline;
