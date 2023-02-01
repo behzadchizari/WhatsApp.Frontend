@@ -12,7 +12,6 @@ export class ChatItemComponent {
   @Output() itemClick = new EventEmitter<ChatItem>();
 
   onChatItemClick() {
-    console.log('item clicked');
     this.itemClick.emit(this.chatItem);
   }
 

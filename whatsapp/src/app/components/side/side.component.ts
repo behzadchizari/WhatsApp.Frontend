@@ -4,6 +4,8 @@ import { trigger, transition, style, animate } from '@angular/animations';
 import { ChatService } from 'src/app/services/chat.service';
 import { Subject, takeUntil, tap } from 'rxjs';
 import { ChatItem } from 'src/app/models/chat-item';
+import { ScreenDetectionService } from 'src/app/services/screen-detection.service';
+import { ScreenSize } from 'src/app/enums/screen-size';
 
 @Component({
   selector: 'app-side',
@@ -34,16 +36,20 @@ export class SideComponent {
   @ViewChild('chatList', { static: true }) chatList!: TemplateRef<any>;
   @ViewChild('messageView', { static: true }) messageView!: TemplateRef<any>;
 
+  isSmallScreeen: boolean = false;
   templates = new Map<string, TemplateRef<any>>();
-
   selectedTemplate: TemplateRef<any> = this.chatList;
 
-  constructor(private componentStateService: SideComponentStateService, private chatService: ChatService) { }
+  constructor(
+    private componentStateService: SideComponentStateService,
+    private chatService: ChatService,
+    private screenService: ScreenDetectionService) { }
 
   ngOnInit() {
     this.fillTheTemplateMap();
     this.subscribeToSelectedComponent();
     this.subscribeToSelectedChatItem();
+    this.subscribeToScreenDetection();
   }
 
   private subscribeToSelectedComponent(): void {
@@ -62,13 +68,22 @@ export class SideComponent {
   selectedChatItem!: ChatItem;
   private _unsubscribe: Subject<boolean> = new Subject<boolean>();
 
-  subscribeToSelectedChatItem() {
+  private subscribeToSelectedChatItem() {
     this.chatService.selectedChatItem$.pipe(
       tap((data) => {
         if (data) {
           this.selectedChatItem = data;
           this.componentStateService.openComponent('messageView');
         };
+      }),
+      takeUntil(this._unsubscribe))
+      .subscribe();
+  }
+
+  private subscribeToScreenDetection() {
+    this.screenService.screenSizeChanged.pipe(
+      tap((screen) => {
+        this.isSmallScreeen = screen === ScreenSize.ExtraSmall || screen === ScreenSize.Small;
       }),
       takeUntil(this._unsubscribe))
       .subscribe();

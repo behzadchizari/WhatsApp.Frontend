@@ -3,7 +3,7 @@
         <aside class="chat-list column">
             <app-side></app-side>
         </aside>
-        <section class="chat column col-1 hidden-sm">
+        <section class="chat column col-1 hidden-sm" *ngIf="!isSmallScreeen">
             <app-default-display *ngIf="!chatSelected" class="col-1"></app-default-display>
             <app-chat *ngIf="chatSelected && selectedChatItem" [chatItem]="selectedChatItem!"></app-chat>
         </section>
