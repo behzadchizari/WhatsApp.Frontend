@@ -1,5 +1,5 @@
 <div class="column full-height">
-    <app-chat-header [chatItem]="chatItem"></app-chat-header>
+    <app-chat-header [chatItem]="chatItem" (close)="closeChatViewMessage()"></app-chat-header>
     <app-chat-mesage-view class="col-1" appScrollToBottom></app-chat-mesage-view>
     <app-chat-control-bar></app-chat-control-bar>
 </div>
