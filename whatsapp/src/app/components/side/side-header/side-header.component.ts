@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./side-header.component.scss']
 })
 export class SideHeaderComponent {
-  @Input() title!: string;
+  @Input() name!: string;
   @Output() back = new EventEmitter();
 
   onBackClick() {
