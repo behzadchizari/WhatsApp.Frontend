@@ -64,6 +64,8 @@ export class ChatListComponent implements OnInit, OnDestroy {
   private openMessageViewInSamllScreen() {
     if (this.isSmallScreeen && this.activeChatItem) {
       this.componentStateService.openComponent(SideInnerComponent.MessageView, this.activeChatItem);
+    } else if (this.activeChatItem) {
+      this.componentStateService.clear();
     }
   }
 
