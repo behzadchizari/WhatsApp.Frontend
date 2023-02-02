@@ -1,0 +1,12 @@
+<span class="title">{{title}}</span>
+<div class="value-container row">
+    <ng-container *ngIf="!editMode">
+        <span>{{value}}</span>
+        <button class="no-button" (click)="toggleEditClick();"><mat-icon>edit</mat-icon></button>
+    </ng-container>
+
+    <div class="edit-control row col-1" *ngIf="editMode">
+        <input #inputRef class="col-1" type="text" [(ngModel)]="value">
+        <button class="no-button" (click)="toggleEditClick();"><mat-icon>check</mat-icon></button>
+    </div>
+</div>

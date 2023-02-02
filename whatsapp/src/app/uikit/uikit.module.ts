@@ -5,25 +5,29 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
-
-
+import { EditableLabelComponent } from './editable-label/editable-label.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    EditableLabelComponent
+  ],
   imports: [
     CommonModule,
     MatSlideToggleModule,
     MatIconModule,
     MatBadgeModule,
     MatMenuModule,
-    MatTooltipModule
+    MatTooltipModule,
+    FormsModule
   ],
   exports: [
     MatSlideToggleModule,
     MatIconModule,
     MatBadgeModule,
     MatMenuModule,
-    MatTooltipModule
+    MatTooltipModule,
+    EditableLabelComponent
   ]
 })
 export class UikitModule { }

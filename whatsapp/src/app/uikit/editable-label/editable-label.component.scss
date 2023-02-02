@@ -1,0 +1,39 @@
+@import 'variables';
+
+:host {
+    width: 100%;
+    background-color: $default-background;
+    padding: 10px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.title {
+    font-size: 12px;
+    color: $panel-header-background;
+}
+
+.value-container {
+    justify-content: space-between;
+}
+
+.no-button {
+    display: flex;
+    color: $icon-lighter;
+
+    mat-icon {
+        font-size: 20px;
+    }
+}
+
+.edit-control {
+    border-bottom: 1px solid $panel-header-background;
+
+    input {
+        border: none;
+        outline: none;
+        color: $primary-font;
+        font-family: segoe;
+    }
+}

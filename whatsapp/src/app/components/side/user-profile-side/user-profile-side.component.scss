@@ -1,5 +1,3 @@
-@import 'variables';
-
 .image-container {
     width: 100%;
     height: fit-content;
@@ -14,9 +12,4 @@
     border-radius: 50%;
     overflow: hidden;
     justify-content: center;
-}
-
-.editable-info {
-    width: 100%;
-    background-color: $default-background;
 }
