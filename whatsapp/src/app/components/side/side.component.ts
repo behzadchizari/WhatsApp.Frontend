@@ -1,11 +1,8 @@
-import { Component, ViewChild, TemplateRef } from '@angular/core';
+import { Component, ViewChild, TemplateRef, OnDestroy } from '@angular/core';
 import { SideComponentStateService } from 'src/app/services/side-component-state.service';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { ChatService } from 'src/app/services/chat.service';
-import { Subject, takeUntil, tap } from 'rxjs';
-import { ChatItem } from 'src/app/models/chat-item';
-import { ScreenDetectionService } from 'src/app/services/screen-detection.service';
-import { ScreenSize } from 'src/app/enums/screen-size';
+import { Subject, tap, takeUntil } from 'rxjs';
+import { SideInnerComponent } from 'src/app/enums/side-inner-component';
 
 @Component({
   selector: 'app-side',
@@ -31,16 +28,16 @@ import { ScreenSize } from 'src/app/enums/screen-size';
   ]
 
 })
-export class SideComponent {
-  @ViewChild('userProfile', { static: true }) userProfile!: TemplateRef<any>;
-  @ViewChild('chatList', { static: true }) chatList!: TemplateRef<any>;
+export class SideComponent implements OnDestroy {
   @ViewChild('messageView', { static: true }) messageView!: TemplateRef<any>;
+  @ViewChild('userProfile', { static: true }) userProfile!: TemplateRef<any>;
 
   isSmallScreeen: boolean = false;
-  templates = new Map<string, TemplateRef<any>>();
-  selectedTemplate: TemplateRef<any> = this.chatList;
-
+  templates = new Map<SideInnerComponent, TemplateRef<any>>();
+  selectedTemplate!: TemplateRef<any>;
   data: any;
+
+  private _unsubscribe: Subject<boolean> = new Subject<boolean>();
 
   constructor(private componentStateService: SideComponentStateService) { }
 
@@ -50,15 +47,22 @@ export class SideComponent {
   }
 
   private subscribeToSelectedComponent(): void {
-    this.componentStateService.component$.subscribe(component => {
-      this.selectedTemplate = this.templates.get(component.component)!;
-      this.data = component.data;
-    });
+    this.componentStateService.component$.pipe(
+      tap((state) => {
+        this.selectedTemplate = this.templates.get(state.component)!;
+        this.data = state.data;
+      }),
+      takeUntil(this._unsubscribe)
+    ).subscribe();
   }
 
   private fillTheTemplateMap(): void {
-    this.templates.set('messageView', this.messageView);
-    this.templates.set('userProfile', this.userProfile);
-    this.templates.set('chatList', this.chatList);
+    this.templates.set(SideInnerComponent.MessageView, this.messageView);
+    this.templates.set(SideInnerComponent.UserProfile, this.userProfile);
+  }
+
+  ngOnDestroy(): void {
+    this._unsubscribe.next(true);
+    this._unsubscribe.complete();
   }
 }
