@@ -9,8 +9,8 @@
 
 
 <ng-template #messageView>
-    <app-side-panel @slideInOut [hasHeader]="false" *ngIf="isSmallScreeen">
-        <app-chat [chatItem]="selectedChatItem"></app-chat>
+    <app-side-panel @slideInOut [hasHeader]="false">
+        <app-chat [chatItem]="data"></app-chat>
     </app-side-panel>
 </ng-template>
 

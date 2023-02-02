@@ -40,21 +40,19 @@ export class SideComponent {
   templates = new Map<string, TemplateRef<any>>();
   selectedTemplate: TemplateRef<any> = this.chatList;
 
-  constructor(
-    private componentStateService: SideComponentStateService,
-    private chatService: ChatService,
-    private screenService: ScreenDetectionService) { }
+  data: any;
+
+  constructor(private componentStateService: SideComponentStateService) { }
 
   ngOnInit() {
     this.fillTheTemplateMap();
     this.subscribeToSelectedComponent();
-    this.subscribeToSelectedChatItem();
-    this.subscribeToScreenDetection();
   }
 
   private subscribeToSelectedComponent(): void {
     this.componentStateService.component$.subscribe(component => {
-      this.selectedTemplate = this.templates.get(component)!;
+      this.selectedTemplate = this.templates.get(component.component)!;
+      this.data = component.data;
     });
   }
 
@@ -62,30 +60,5 @@ export class SideComponent {
     this.templates.set('messageView', this.messageView);
     this.templates.set('userProfile', this.userProfile);
     this.templates.set('chatList', this.chatList);
-  }
-
-
-  selectedChatItem!: ChatItem;
-  private _unsubscribe: Subject<boolean> = new Subject<boolean>();
-
-  private subscribeToSelectedChatItem() {
-    this.chatService.selectedChatItem$.pipe(
-      tap((data) => {
-        if (data) {
-          this.selectedChatItem = data;
-          this.componentStateService.openComponent('messageView');
-        };
-      }),
-      takeUntil(this._unsubscribe))
-      .subscribe();
-  }
-
-  private subscribeToScreenDetection() {
-    this.screenService.screenSize.pipe(
-      tap((screen) => {
-        this.isSmallScreeen = screen === ScreenSize.ExtraSmall || screen === ScreenSize.Small;
-      }),
-      takeUntil(this._unsubscribe))
-      .subscribe();
   }
 }

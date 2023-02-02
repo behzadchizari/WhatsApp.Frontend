@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SideInnerComponent } from 'src/app/enums/side-inner-component';
 import { SideComponentStateService } from 'src/app/services/side-component-state.service';
 
 @Component({
@@ -11,6 +12,6 @@ export class ChatListSideComponent {
   constructor(private componentStateService: SideComponentStateService) { }
 
   showUserProfile() {
-    this.componentStateService.openComponent('userProfile');
+    this.componentStateService.openComponent(SideInnerComponent.UserProfile);
   }
 }
