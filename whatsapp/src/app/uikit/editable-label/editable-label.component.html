@@ -6,7 +6,7 @@
     </ng-container>
 
     <div class="edit-control row col-1" *ngIf="editMode">
-        <input #inputRef class="col-1" type="text" [(ngModel)]="value" (keyup.enter)="toggleEditClick();">
-        <button class="no-button" (click)="toggleEditClick();"><mat-icon>check</mat-icon></button>
+        <input #inputRef class="col-1" type="text" [(ngModel)]="newValue" (keyup.enter)="submit()">
+        <button class="no-button" (click)="submit();"><mat-icon>check</mat-icon></button>
     </div>
 </div>
