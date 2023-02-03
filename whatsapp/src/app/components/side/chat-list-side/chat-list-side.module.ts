@@ -8,6 +8,7 @@ import { ChatItemComponent } from './chat-item/chat-item.component';
 import { UikitModule } from 'src/app/uikit/uikit.module';
 import { PipesModule } from 'src/app/pipes/pipes.module';
 import { DirectivesModule } from 'src/app/directives/directives.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { DirectivesModule } from 'src/app/directives/directives.module';
     CommonModule,
     UikitModule,
     PipesModule,
-    DirectivesModule
+    DirectivesModule,
+    BrowserAnimationsModule
   ],
   exports: [
     ChatListSideComponent,

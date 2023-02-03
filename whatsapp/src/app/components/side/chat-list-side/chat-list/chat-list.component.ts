@@ -1,3 +1,4 @@
+import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subject, take, takeUntil, tap } from 'rxjs';
 import { ScreenSize } from 'src/app/enums/screen-size';
@@ -40,6 +41,9 @@ export class ChatListComponent implements OnInit, OnDestroy {
     this.openMessageViewInSamllScreen();
   }
 
+  addChat() {
+    this.chatService.pushChatToTest();
+  }
   private subscribeToSelectedChatItem() {
     this.chatService.selectedChatItem$.pipe(
       tap((data) => {

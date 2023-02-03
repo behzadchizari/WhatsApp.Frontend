@@ -7,4 +7,5 @@ export class ChatItem {
     unreadMessagesCount?: number;
     image?: string;
     isActive?: boolean;
+    isPinned?: boolean;
 }

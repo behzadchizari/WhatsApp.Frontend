@@ -1,3 +1,5 @@
-<app-chat-item *ngFor="let chatItem of chatList$ | async" [chatItem]="chatItem" (itemClick)="onChatItemClick($event)"
-    [isActive]="chatItem === activeChatItem">
-</app-chat-item>
+<button (click)="addChat()" style="position: absolute;top: 15px;left: 69px;">Add</button>
+<ng-container *ngFor="let chatItem of chatList$ | async | sortChatItems; let i = index">
+    <app-chat-item [chatItem]="chatItem" (itemClick)="onChatItemClick($event)" [isActive]="chatItem === activeChatItem">
+    </app-chat-item>
+</ng-container>
