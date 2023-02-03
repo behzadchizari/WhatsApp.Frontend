@@ -15,11 +15,14 @@
                 <span>{{chatItem.displayMessage}}</span>
             </div>
             <div class="chat-status row">
+                <div class="icon-center" *ngIf="chatItem.isPinned">
+                    <mat-icon>outlined_flag</mat-icon>
+                </div>
                 <div class="icon-center" *ngIf="chatItem.muted">
                     <mat-icon>volume_off</mat-icon>
                 </div>
                 <div class="unread-badge" *ngIf="chatItem.unreadMessagesCount">
-                    <span [innerHTML]=""></span>{{chatItem.unreadMessagesCount | limitNumber:2}}
+                    <span>{{chatItem.unreadMessagesCount | limitNumber:2}}</span>
                 </div>
             </div>
             <div class="chat-item-action">
@@ -27,7 +30,10 @@
                     <mat-icon>keyboard_arrow_down</mat-icon>
                 </button>
                 <mat-menu #menu="matMenu">
-                    <button mat-menu-item>Pin chat</button>
+                    <button mat-menu-item (click)="onPinChatItemClick(chatItem)" *ngIf="!chatItem.isPinned">Pin
+                        chat</button>
+                    <button mat-menu-item (click)="onUnpinChatItemClick(chatItem)" *ngIf="chatItem.isPinned">Unpin
+                        chat</button>
                     <button mat-menu-item>Marke as unread</button>
                     <button mat-menu-item>Delete</button>
                 </mat-menu>
