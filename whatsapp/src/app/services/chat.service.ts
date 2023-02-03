@@ -16,11 +16,12 @@ export class ChatService {
     {
       id: 1,
       name: 'Justin Leibow',
-      displayMessage: "The hand sanitizer was actually clear glue.",
+      displayMessage: "The hand sanitizer was actually clear glue.The hand sanitizer was actually clear glue.",
       image: 'https://picsum.photos/id/22/400/400',
       lastActivity: DateHelper.addHours(new Date(), -0.25),
-      muted: false,
-      unreadMessagesCount: 0
+      muted: true,
+      unreadMessagesCount: 1,
+      isPinned: true
     },
     {
       id: 2,
@@ -129,7 +130,6 @@ export class ChatService {
       lastActivity: DateHelper.addDays(new Date(), -500),
       muted: false,
       unreadMessagesCount: 0,
-      isPinned: true
     },
     {
       id: 14,
@@ -148,7 +148,6 @@ export class ChatService {
       lastActivity: new Date('2022/12/4'),
       muted: true,
       unreadMessagesCount: 0,
-      isPinned: true
     }
   ]
 

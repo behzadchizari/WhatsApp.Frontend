@@ -12,17 +12,21 @@
         </div>
         <div class="chat-item-secondary row">
             <div class="message-hint col-1" [attr.matTooltip]="chatItem.displayMessage">
-                <span>{{chatItem.displayMessage}}</span>
+                <div class="display-message">
+                    <span>{{chatItem.displayMessage}}</span>
+                </div>
             </div>
             <div class="chat-status row">
-                <div class="icon-center" *ngIf="chatItem.isPinned">
-                    <mat-icon>outlined_flag</mat-icon>
+                <div *ngIf="chatItem.isPinned">
+                    <mat-icon class="icon-center">outlined_flag</mat-icon>
                 </div>
-                <div class="icon-center" *ngIf="chatItem.muted">
-                    <mat-icon>volume_off</mat-icon>
+                <div *ngIf="chatItem.muted">
+                    <mat-icon class="icon-center">volume_off</mat-icon>
                 </div>
-                <div class="unread-badge" *ngIf="chatItem.unreadMessagesCount">
-                    <span>{{chatItem.unreadMessagesCount | limitNumber:2}}</span>
+                <div class="icon-center" *ngIf="chatItem.unreadMessagesCount">
+                    <div class="unread-badge">
+                        <span>{{chatItem.unreadMessagesCount | limitNumber:2}}</span>
+                    </div>
                 </div>
             </div>
             <div class="chat-item-action">

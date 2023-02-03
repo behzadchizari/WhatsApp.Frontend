@@ -49,42 +49,42 @@
 
 .chat-item-secondary {
     position: relative;
-    height: 25px;
+    align-items: flex-start;
 }
 
 .message-hint {
-    flex-grow: 1;
-    width: calc(100% - 70px);
-    position: absolute;
+    max-width: 100%;
     transition: all 100ms ease-in;
+    position: relative;
+
+    .display-message {
+        position: absolute;
+        width: 100%;
+    }
 
     span {
-
         overflow: hidden;
-        width: 100%;
         white-space: nowrap;
         text-overflow: ellipsis;
         font-size: 10px;
-        margin: 0;
-        display: block;
-
+        position: absolute;
+        width: 100%;
     }
 }
 
 .chat-status {
     align-items: center;
     transition: all 100ms ease-in;
-    position: absolute;
     right: 0;
 
     .icon-center {
+        width: 24px;
+        height: 24px;
         display: flex;
-
-        & mat-icon {
-            color: $icon-lighter;
-            transform: scale(0.7);
-        }
-
+        align-items: center;
+        place-content: center;
+        color: $icon-lighter;
+        font-size: 18px;
     }
 }
 
@@ -99,20 +99,13 @@
     min-width: 20px;
     height: 20px;
     font-size: 10px;
-    display: none;
-    padding: 0 4px;
 }
 
 .chat-item-action {
-    flex-basis: auto;
-    transition: all 100ms ease;
-    display: inline-block;
-    overflow: hidden;
-    position: absolute;
-    right: 0;
+    transition: all 400ms ease;
+    width: 0;
     visibility: hidden;
-    opacity: 0;
-    transform: translateX(10px);
+    transform: translateX(20px);
 
     & mat-icon {
         color: $icon-lighter;
@@ -125,7 +118,7 @@
     }
 
     .message-hint {
-        font-weight: 800;
+        font-weight: bold;
     }
 
     .unread-badge {
@@ -139,19 +132,9 @@
 }
 
 .chat-item:hover {
-    & .chat-status {
-        right: 25px;
-    }
-
     & .chat-item-action {
         visibility: visible;
-        transform: translateX(0);
-        opacity: 1;
-
+        width: 24px;
+        transform: translateX(0px);
     }
-
-    & .message-hint {
-        width: calc(100% - 94px);
-    }
-
 }
