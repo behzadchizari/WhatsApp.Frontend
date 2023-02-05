@@ -56,6 +56,7 @@
     max-width: 100%;
     transition: all 100ms ease-in;
     position: relative;
+    min-height: 20px;
 
     .display-message {
         position: absolute;
@@ -101,16 +102,7 @@
     font-size: 10px;
 }
 
-.chat-item-action {
-    transition: all 400ms ease;
-    width: 0;
-    visibility: hidden;
-    transform: translateX(20px);
 
-    & mat-icon {
-        color: $icon-lighter;
-    }
-}
 
 .unread {
     .chat-name {
@@ -131,10 +123,37 @@
     }
 }
 
-.chat-item:hover {
-    & .chat-item-action {
-        visibility: visible;
-        width: 24px;
-        transform: translateX(0px);
+//LG && MD
+@media screen and (min-width:$md-screen) {
+    .chat-item-action {
+        transition: all 400ms ease;
+        width: 0;
+        opacity: 0;
+        transform: translateX(5px);
+
+        & mat-icon {
+            color: $icon-lighter
+        }
+    }
+
+    .chat-item:hover {
+        & .chat-item-action {
+            visibility: visible;
+            width: 24px;
+            opacity: 1;
+            transform: translateX(0px);
+        }
+    }
+}
+
+//SM && XS
+@media screen and (max-width: $md-screen) {
+    .chat-item-action {
+        position: absolute;
+        opacity: 1;
+        width: 0;
+        overflow: hidden;
+        top: -20px;
+        left: 0;
     }
 }

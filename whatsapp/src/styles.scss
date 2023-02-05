@@ -110,6 +110,18 @@ body {
   background-color: $scrolbar-background;
 }
 
+
+
+//XS and SM
+@media screen and (max-width: $md-screen) {
+  * {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+}
+
 // Media query template
 //LG
 // @media screen and (min-width:$lg-screen) {

@@ -1,5 +1,5 @@
 <div class="chat-item row" [class.unread]="chatItem.unreadMessagesCount" [class.active]="isActive"
-    (click)="onChatItemClick()">
+    (click)="onChatItemClick()" (appTouchHold)="openChatActionMenu($event)">
     <div class="chat-item-avatar-container">
         <div class="chat-item-avatar">
             <img [src]="chatItem.image" alt="username">
@@ -18,7 +18,7 @@
             </div>
             <div class="chat-status row">
                 <div *ngIf="chatItem.isPinned">
-                    <mat-icon class="icon-center">outlined_flag</mat-icon>
+                    <mat-icon class="icon-center">bookmark_border</mat-icon>
                 </div>
                 <div *ngIf="chatItem.muted">
                     <mat-icon class="icon-center">volume_off</mat-icon>
@@ -30,7 +30,8 @@
                 </div>
             </div>
             <div class="chat-item-action">
-                <button class="no-button" (click)="onChatActionClick($event)" [matMenuTriggerFor]="menu">
+                <button class="no-button" (click)="openChatActionMenu($event)" #menuTrigger="matMenuTrigger"
+                    [matMenuTriggerFor]="menu">
                     <mat-icon>keyboard_arrow_down</mat-icon>
                 </button>
                 <mat-menu #menu="matMenu">

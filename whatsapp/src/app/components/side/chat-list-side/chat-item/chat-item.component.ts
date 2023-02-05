@@ -1,5 +1,6 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { ChatItem } from 'src/app/models/chat-item';
+import { MatMenuTrigger } from '@angular/material/menu';
 import { ChatService } from 'src/app/services/chat.service';
 
 @Component({
@@ -11,6 +12,8 @@ export class ChatItemComponent {
   @Input() isActive!: boolean;
   @Input() chatItem!: ChatItem;
   @Output() itemClick = new EventEmitter<ChatItem>();
+  @ViewChild('menuTrigger') trigger!: MatMenuTrigger;
+
 
   constructor(private chatService: ChatService) { }
 
@@ -26,8 +29,9 @@ export class ChatItemComponent {
     this.chatService.unPinChatItem(chatItem);
   }
 
-  onChatActionClick(event: Event) {
+  openChatActionMenu(event: Event) {
     event.preventDefault();
     event.stopPropagation();
+    this.trigger.openMenu();
   }
 }
